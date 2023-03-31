@@ -1,20 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
     <title>Expenses</title>
-</head>
-<body>
-    <h1>Test</h1>
+    <link href="./styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+  </head>
+  <body>
     <div class="app">
-        <aside class="aside"></aside>
+      <aside class="aside">
+        <h1 class="logo"><span class="blue-text">Bud</span><span class="black-text">get</span></h1>
+        <section class="wallets">
+          <section class="add-wallet">
+            <p class="left-text">Wallets</p>
+            <button class="right-button"><span class="plus-sign">+</span></button>
+          </section>
+          <section class="wallet-types">
+            <div class="left-panel">
+              <img src="assets/portofel.png" alt="portofel" width="40px" height="40px">
+            </div>
+            <div class="right-panel">
+              <p class="title">Home Wallet</p>
+              <p class="subtitle">400 RON</p>
+            </div>
+          </section>
+          <section class="wallet-types">
+            <div class="left-panel">
+              <img src="assets/Economies.png" alt="econmies" width="40px" height="40px">
+            </div>
+            <div class="right-panel">
+              <p class="title">Economies</p>
+              <p class="subtitle">1000 RON</p>
+            </div>
+          </section>
+        </section>
+        
+        <hr class="horizontal-line">
+        
+        <section class="categories">
+          <section class="add-wallet">
+            <p class="left-text">Categories</p>
+            <button class="right-button"><span class="plus-sign">+</span></button>
+          </section>
+          <section class="wallet-types">
+            <div class="left-panel">
+              <img src="assets/Utility.png" alt="utility" width="40px" height="40px">
+            </div>
+            <div class="right-panel">
+              <p class="title">Utility</p>
+              <p class="subtitle">250 RON</p>
+            </div>
+          </section>
+          <section class="wallet-types">
+            <div class="left-panel">
+              <img src="assets/Saving.png" alt="utility" width="40px" height="40px">
+            </div>
+            <div class="right-panel">
+              <p class="title">Saving</p>
+              <p class="subtitle">1000 RON</p>
+            </div>
+          </section>
+          <section class="wallet-types">
+            <div class="left-panel">
+              <img src="assets/Shopping.png" alt="utility" width="40px" height="40px">
+            </div>
+            <div class="right-panel">
+              <p class="title">Shopping</p>
+              <p class="subtitle">430 RON</p>
+            </div>
+          </section>
+          <section class="wallet-types">
+            <div class="left-panel">
+              <img src="assets/Personal.png" alt="personal" width="40px" height="40px">
+            </div>
+            <div class="right-panel">
+              <p class="title">Personal</p>
+              <p class="subtitle">150 RON</p>
+            </div>
+          </section>
+          <section class="wallet-types">
+            <div class="left-panel">
+              <img src="assets/Health.png" alt="utility" width="40px" height="40px">
+            </div>
+            <div class="right-panel">
+              <p class="title">Health</p>
+              <p class="subtitle">70 RON</p>
+            </div>
+          </section>
+        </section>
+      </aside>
+      <main>
+          <div class="hero-area"></div>
+      </main>
     </div>
-    <main>
-        <div class="hero-area"></div>
-    </main>
 
-    <script src="index.js"></script>
-</body>
+    <script src="./index.js"></script>
+  </body>
 </html>
