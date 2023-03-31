@@ -4,9 +4,26 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
 .blue-text {
   color: blue;
   
+}
+
+.history-text {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.history {
+  margin-top: 60px;
+}
+
+.balance {
+  margin-top: 33px;
+  display: flex;
+  flex-direction: row;
+  gap: 27px;
 }
 
 .black-text {
@@ -25,6 +42,8 @@
     justify-content: space-between;
 }
 
+
+
 .wallet-types {
   margin-left: 56px;
   margin-bottom: 32px;
@@ -33,7 +52,87 @@
   gap: 16px;
 }
 
+.selected-wallet {
+  margin-top: 202px;
+}
+
+.current-wallet {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.profit {
+  height: 88px;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #F3F4F6;
+  
+}
+
+.green {
+  color: #219653;
+}
+
+.red {
+  color: #EB5757;
+}
+
+.expense {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.line-expense {
+  padding-left: 24px;
+  padding-right: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.operatiune {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #F3F4F6;
+}
+
+.income {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
 .right-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.right-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 600;
+font-size: 36px;
+}
+
+.ident {
+  padding-left: 72px;
+}
+
+.greetings {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -94,7 +193,7 @@
 .app {
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 
 .aside {
@@ -118,6 +217,41 @@ main {
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+.hero-area {
+  margin-left: 56px;
+  margin-right: 56px;
+  margin-top: 61.5px;
+}
+
+.log-expense {
+  background-color: black;
+  border-radius: 4px;
+  padding: 10px 25px;
+  color: white;
+  transition: 0.3s;
+}
+
+.log-expense:hover {
+  background-color: white;
+  color: black;
+
+}
+
+.question {
+  font-size: 20px;
+}
+
+.header {
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.add-expense-text {
+  font-weight: 500;
+font-size: 20px;
 }
 
 .aside {
