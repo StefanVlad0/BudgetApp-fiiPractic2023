@@ -1,3 +1,54 @@
+const btnEdit = document.querySelector(".btn.edit");
+const btnDelete = document.querySelector(".btn.delete");
+
+const editModeContainer = document.createElement("div");
+editModeContainer.textContent = "In edit mode";
+editModeContainer.style.color = "green";
+editModeContainer.style.visibility = "hidden";
+
+document.querySelector(".buttons").appendChild(editModeContainer);
+
+let inEditMode = false;
+let inDeleteMode = false;
+
+const editClickHandler = () => {
+
+  inEditMode = !inEditMode;
+  inDeleteMode = false;
+  if(inEditMode) {
+    editModeContainer.textContent = "In edit mode";
+    editModeContainer.style.color = "green";
+  }
+  editModeContainer.style.visibility = inEditMode ? "visible" : "hidden";
+  
+  btnEdit.style.color = inEditMode ? "green" : "black";
+  
+  console.log("Edit value is: " + inEditMode);
+  console.log("Delete value is: " + inDeleteMode);
+};
+
+const deleteClickHandler = () => {
+  inDeleteMode = !inDeleteMode;
+  inEditMode  = false;
+  if(inDeleteMode) {
+    editModeContainer.textContent = "In delete mode";
+    editModeContainer.style.color = "red";
+  }
+  editModeContainer.style.visibility = inDeleteMode ? "visible" : "hidden";
+  btnEdit.style.color = inEditMode ? "green" : "black";
+ 
+  console.log("Edit value is: " + inEditMode);
+  console.log("Delete value is: " + inDeleteMode);
+};
+
+
+btnEdit.addEventListener("click", editClickHandler);
+btnDelete.addEventListener("click", deleteClickHandler);
+
+// btnDelete.addEventListener("click", () => {
+//   btnEdit.removeEventListener("click", editClickHandler);
+// });
+
 const categories = [
   {
     name: "Utility",
