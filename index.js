@@ -16,16 +16,32 @@
 
 const openModalButton = document.querySelector('#open-modal');
 const modalElement = document.querySelector('#my-modal');
+const addWalletButton = document.querySelector("#add-wallet-button");
+const closeModalButton = document.querySelector('#close-modal');
+
+const newWalletSection = document.querySelector("#new-wallet");
+const newWalletType = document.querySelector("#new-wallet-type");
+const newWalletAmount = document.querySelector("#new-wallet-amount");
+
 
 openModalButton.addEventListener('click', () => {
   modalElement.style.display = 'block';
 });
 
 
-const closeModalButton = document.querySelector('#close-modal');
-
 closeModalButton.addEventListener('click', () => {
   modalElement.style.display = 'none';
+});
+
+addWalletButton.addEventListener("click", () => {
+  const walletType = document.querySelector("#wallet-type").value;
+  const amount = document.querySelector("#amount").value;
+  console.log(walletType);
+  console.log(amount);
+  // do something with the walletType and amount
+  newWalletType.textContent = walletType;
+  newWalletAmount.textContent = amount + " RON";
+  newWalletSection.style.display = "flex";
 });
 
 
