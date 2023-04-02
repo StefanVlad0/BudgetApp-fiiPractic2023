@@ -1,49 +1,115 @@
-const btnEdit = document.querySelector(".btn.edit");
-const btnDelete = document.querySelector(".btn.delete");
+// const btnEdit = document.querySelector(".btn.edit");
+// const btnDelete = document.querySelector(".btn.delete");
 
-const editModeContainer = document.createElement("div");
-editModeContainer.textContent = "In edit mode";
-editModeContainer.style.color = "green";
-editModeContainer.style.visibility = "hidden";
+// const editModeContainer = document.createElement("div");
+// editModeContainer.textContent = "In edit mode";
+// editModeContainer.style.color = "green";
+// editModeContainer.style.visibility = "hidden";
 
-document.querySelector(".buttons").appendChild(editModeContainer);
+// const buttons = document.querySelectorAll(".buttons");
+// buttons.forEach(element => {
+//   const textForEdit = document.createElement('div');
+//   textForEdit.textContent = "In edit mode";
+//   textForEdit.style.color = "green";
+//   element.appendChild(textForEdit);
+// });
 
-let inEditMode = false;
-let inDeleteMode = false;
+const buttons = document.querySelectorAll(".buttons");
 
-const editClickHandler = () => {
+buttons.forEach(button => {
+  const textForEdit = document.createElement('div');
+  textForEdit.textContent = "In edit mode";
+  textForEdit.style.color = "green";
+  textForEdit.style.visibility = "hidden";
+  button.appendChild(textForEdit);
 
-  inEditMode = !inEditMode;
-  inDeleteMode = false;
-  if(inEditMode) {
-    editModeContainer.textContent = "In edit mode";
-    editModeContainer.style.color = "green";
-  }
-  editModeContainer.style.visibility = inEditMode ? "visible" : "hidden";
+  let inEditMode = false;
+  let inDeleteMode = false;
   
-  btnEdit.style.color = inEditMode ? "green" : "black";
+  const editButton = button.querySelector('.edit');
+  const deleteButton = button.querySelector('.delete');
   
-  console.log("Edit value is: " + inEditMode);
-  console.log("Delete value is: " + inDeleteMode);
-};
+  editButton.addEventListener('click', () => {
+    inDeleteMode = false;
+    inEditMode = !inEditMode;
+    if(inEditMode) {
+      textForEdit.textContent = "In edit mode";
+      textForEdit.style.color = "green";
+    }
+    textForEdit.style.visibility = inEditMode ? "visible" : "hidden";
+  });
+  
+  deleteButton.addEventListener('click', () => {
+    inEditMode = false;
+    inDeleteMode = !inDeleteMode;
+    if(inDeleteMode) {
+      textForEdit.textContent = "In delete mode";
+      textForEdit.style.color = "red";
+    }
+    textForEdit.style.visibility = inDeleteMode ? "visible" : "hidden";
+  });
+});
 
-const deleteClickHandler = () => {
-  inDeleteMode = !inDeleteMode;
-  inEditMode  = false;
-  if(inDeleteMode) {
-    editModeContainer.textContent = "In delete mode";
-    editModeContainer.style.color = "red";
-  }
-  editModeContainer.style.visibility = inDeleteMode ? "visible" : "hidden";
-  btnEdit.style.color = inEditMode ? "green" : "black";
+// const buttons = document.querySelectorAll(".buttons");
+
+// buttons.forEach(button => {
+//   const textForEdit = document.createElement('div');
+//   textForEdit.textContent = "In edit mode";
+//   textForEdit.style.color = "green";
+//   textForEdit.style.display = "none";
+//   button.appendChild(textForEdit);
+  
+//   let visible = false;
+  
+//   const editButton = button.querySelector('.edit');
+//   const deleteButton = button.querySelector('.delete');
+  
+//   const toggleVisibility = () => {
+//     visible = !visible;
+//     textForEdit.style.display = visible ? "block" : "none";
+//   };
+  
+//   editButton.addEventListener('click', toggleVisibility);
+//   deleteButton.addEventListener('click', toggleVisibility);
+// });
+
+
+// let inEditMode = false;
+// let inDeleteMode = false;
+
+// const editClickHandler = () => {
+
+//   inEditMode = !inEditMode;
+//   inDeleteMode = false;
+//   if(inEditMode) {
+//     editModeContainer.textContent = "In edit mode";
+//     editModeContainer.style.color = "green";
+//   }
+//   editModeContainer.style.visibility = inEditMode ? "visible" : "hidden";
+  
+//   btnEdit.style.color = inEditMode ? "green" : "black";
+  
+//   console.log("Edit value is: " + inEditMode);
+//   console.log("Delete value is: " + inDeleteMode);
+// };
+
+// const deleteClickHandler = () => {
+//   inDeleteMode = !inDeleteMode;
+//   inEditMode  = false;
+//   if(inDeleteMode) {
+//     editModeContainer.textContent = "In delete mode";
+//     editModeContainer.style.color = "red";
+//   }
+//   editModeContainer.style.visibility = inDeleteMode ? "visible" : "hidden";
+//   btnEdit.style.color = inEditMode ? "green" : "black";
  
-  console.log("Edit value is: " + inEditMode);
-  console.log("Delete value is: " + inDeleteMode);
-};
+//   console.log("Edit value is: " + inEditMode);
+//   console.log("Delete value is: " + inDeleteMode);
+// };
 
 
-btnEdit.addEventListener("click", editClickHandler);
-btnDelete.addEventListener("click", deleteClickHandler);
+// btnEdit.addEventListener("click", editClickHandler);
+// btnDelete.addEventListener("click", deleteClickHandler);
 
 // btnDelete.addEventListener("click", () => {
 //   btnEdit.removeEventListener("click", editClickHandler);
