@@ -11,7 +11,9 @@
     <div class="app">
       <div id="my-modal" style="display: none;">
         <h2>Add wallet</h2>
-        <p>ToDo: Adaug inputuri si buton de Submit</p>
+        <input type="text" id="wallet-type" placeholder="Wallet Type">
+        <input type="number" id="amount" placeholder="Amount in RON">
+        <button id="add-wallet-button">Add</button>
         <button id="close-modal">Close</button>
       </div>
       <aside class="aside">
@@ -37,6 +39,15 @@
             <div class="right-panel">
               <p class="title">Economies</p>
               <p class="subtitle">1000 RON</p>
+            </div>
+          </section>
+          <section class="wallet-types" id="new-wallet" style="display: none">
+            <div class="left-panel">
+              <img src="assets/Economies.png" alt="econmies" width="40px" height="40px">
+            </div>
+            <div class="right-panel">
+              <p class="title" id="new-wallet-type"></p>
+              <p class="subtitle" id="new-wallet-amount"></p>
             </div>
           </section>
         </section>
