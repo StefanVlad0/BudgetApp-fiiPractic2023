@@ -14,6 +14,21 @@
 //   element.appendChild(textForEdit);
 // });
 
+const openModalButton = document.querySelector('#open-modal');
+const modalElement = document.querySelector('#my-modal');
+
+openModalButton.addEventListener('click', () => {
+  modalElement.style.display = 'block';
+});
+
+
+const closeModalButton = document.querySelector('#close-modal');
+
+closeModalButton.addEventListener('click', () => {
+  modalElement.style.display = 'none';
+});
+
+
 const buttons = document.querySelectorAll(".buttons");
 
 buttons.forEach(button => {
