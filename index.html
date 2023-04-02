@@ -9,13 +9,18 @@
   </head>
   <body>
     <div class="app">
-      <div id="my-modal" style="display: none;">
+      <div id="my-modal" class="my-modal" style="display: none;">
         <h2>Add wallet</h2>
-        <input type="text" id="wallet-type" placeholder="Wallet Type">
-        <input type="number" id="amount" placeholder="Amount in RON">
-        <button id="add-wallet-button">Add</button>
-        <button id="close-modal">Close</button>
+        <form id="wallet-form">
+          <label for="wallet-type">Wallet Type:</label>
+          <input type="text" id="wallet-type" name="wallet-type"><br>
+          <label for="wallet-amount">Amount in RON:</label>
+          <input type="number" id="wallet-amount" name="wallet-amount"><br>
+          <input type="submit" value="Add Wallet">
+          <button id="close-modal" class="close">Close</button>
+        </form>
       </div>
+      
       <aside class="aside">
         <h1 class="logo"><span class="blue-text">Bud</span><span class="black-text">get</span></h1>
         <section class="wallets">
@@ -50,6 +55,7 @@
               <p class="subtitle" id="new-wallet-amount"></p>
             </div>
           </section>
+          <div id="wallets-container"></div>
         </section>
         
         <hr class="horizontal-line">

@@ -1,49 +1,66 @@
-// const btnEdit = document.querySelector(".btn.edit");
-// const btnDelete = document.querySelector(".btn.delete");
+let wallets = [];
 
-// const editModeContainer = document.createElement("div");
-// editModeContainer.textContent = "In edit mode";
-// editModeContainer.style.color = "green";
-// editModeContainer.style.visibility = "hidden";
+// Select the wallets container and the wallet form
+const walletsContainer = document.querySelector('#wallets-container');
+const walletForm = document.querySelector('#wallet-form');
 
-// const buttons = document.querySelectorAll(".buttons");
-// buttons.forEach(element => {
-//   const textForEdit = document.createElement('div');
-//   textForEdit.textContent = "In edit mode";
-//   textForEdit.style.color = "green";
-//   element.appendChild(textForEdit);
-// });
+// Function to generate HTML for a single wallet
+function generateWalletHTML(wallet) {
+  return `
+    <section class="wallet-types">
+      <div class="left-panel">
+        <img src="assets/portofel.png" alt="portofel" width="40px" height="40px">
+      </div>
+      <div class="right-panel">
+        <p class="title">${wallet.walletType}</p>
+        <p class="subtitle">${wallet.walletAmount} RON</p>
+      </div>
+    </section>
+  `;
+}
 
-const openModalButton = document.querySelector('#open-modal');
-const modalElement = document.querySelector('#my-modal');
-const addWalletButton = document.querySelector("#add-wallet-button");
-const closeModalButton = document.querySelector('#close-modal');
+// Function to generate HTML for all wallets
+function generateAllWalletsHTML() {
+  let walletsHTML = '';
+  wallets.forEach(wallet => {
+    walletsHTML += generateWalletHTML(wallet);
+  });
+  walletsContainer.innerHTML = walletsHTML;
+}
 
-const newWalletSection = document.querySelector("#new-wallet");
-const newWalletType = document.querySelector("#new-wallet-type");
-const newWalletAmount = document.querySelector("#new-wallet-amount");
+// Function to handle form submission
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const walletType = document.querySelector('#wallet-type').value;
+  const walletAmount = document.querySelector('#wallet-amount').value;
+  const newWallet = { walletType, walletAmount };
+  wallets.push(newWallet);
+  generateAllWalletsHTML();
+  closeModal(e);
+}
 
+// Add event listener to the wallet form
+walletForm.addEventListener('submit', handleFormSubmit);
 
-openModalButton.addEventListener('click', () => {
-  modalElement.style.display = 'block';
-});
+// Function to open the modal
+function openModal() {
+  document.querySelector('#my-modal').style.display = 'block';
+}
 
+// Function to close the modal
+function closeModal(event) {
+  event.preventDefault()
+  document.querySelector('#my-modal').style.display = 'none';
+}
 
-closeModalButton.addEventListener('click', () => {
-  modalElement.style.display = 'none';
-});
+// Add event listener to the add wallet button to open the modal
+document.querySelector('#open-modal').addEventListener('click', openModal);
 
-addWalletButton.addEventListener("click", () => {
-  const walletType = document.querySelector("#wallet-type").value;
-  const amount = document.querySelector("#amount").value;
-  console.log(walletType);
-  console.log(amount);
-  // do something with the walletType and amount
-  newWalletType.textContent = walletType;
-  newWalletAmount.textContent = amount + " RON";
-  newWalletSection.style.display = "flex";
-});
+// Add event listener to the close button to close the modal
+document.querySelector('.close').addEventListener('click', closeModal);
 
+// Generate HTML for all wallets on page load
+generateAllWalletsHTML();
 
 const buttons = document.querySelectorAll(".buttons");
 
