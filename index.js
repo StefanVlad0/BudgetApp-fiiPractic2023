@@ -1,4 +1,5 @@
 
+
 ////// WALLETS /////
 
 let wallets = JSON.parse(localStorage.getItem('wallets')) || [];
@@ -246,3 +247,38 @@ function handleExpenseFormSubmit(e) {
 
 updateCategoryDropdown();
 generateAllExpensesHTML();
+
+
+
+///// CURRENT WALLET //////
+
+let currentWalletIndex = 0;
+const currentWalletContainer = document.querySelector('#current-wallet-container');
+
+let walletsSelected = document.querySelectorAll(".wallet-types");
+
+walletsSelected.forEach((wallet, index) => {
+  
+  wallet.addEventListener('click', (event) => {
+    const walletNameSelected = event.target.querySelector(".title").textContent;
+    if(walletNameSelected) {
+      generateCurrentWallet(index);
+      
+    }
+  })
+});
+
+function generateCurrentWallet(index) {
+  let currentWalletHTML = '';
+  currentWalletHTML += `<section class="current-wallet">
+  <div class="left-panel">
+    <img src="${wallets[index].walletPhoto}" alt="portofel" width="40px" height="40px">
+  </div>
+  <div class="right-text">
+    <p>${wallets[index].walletType}</p>
+  </div>
+</section>`;
+currentWalletContainer.innerHTML = currentWalletHTML;
+}
+
+generateCurrentWallet(0);

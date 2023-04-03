@@ -46,7 +46,9 @@
   z-index: 9999;
 }
 
-
+.wallet-types:hover {
+  background-color: #F8F8F8;
+}
 
 .blue-text {
   color: blue;
