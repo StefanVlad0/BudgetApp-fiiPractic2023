@@ -227,6 +227,8 @@ function handleExpenseFormSubmit(e) {
   const expenseAmount = document.querySelector('#expense-amount').value;
   const categoryIndex = document.querySelector('#category-value').value;
   const newExpense = { expenseName, expenseDate, expenseAmount, categoryIndex };
+  categories[categoryIndex].categoryAmount = parseInt(categories[categoryIndex].categoryAmount) + parseInt(expenseAmount);
+  generateAllCategoriesHTML();
   expenses.unshift(newExpense);
   localStorage.setItem('expenses', JSON.stringify(expenses));
   generateAllExpensesHTML();
