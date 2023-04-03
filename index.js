@@ -17,7 +17,7 @@ function generateWalletHTML(wallet) {
       </div>
       <div class="right-panel">
         <p class="title">${wallet.walletType}</p>
-        <p class="subtitle">${wallet.walletAmount} RON</p>
+        <p class="subtitle">${parseInt(wallet.walletTotalIncomes) - parseInt(wallet.walletTotalExpenses)} RON</p>
       </div>
     </section>
   `;
@@ -38,8 +38,10 @@ function handleFormSubmit(e) {
   const walletType = document.querySelector('#wallet-type').value;
   const walletAmount = document.querySelector('#wallet-amount').value;
   const walletPhoto = document.querySelector('input[name="photo"]:checked').value;
-  console.log(walletPhoto);
-  const newWallet = { walletType, walletAmount, walletPhoto};
+  const walletTotalIncomes = walletAmount;
+  const walletTotalExpenses = "0";
+  //console.log(walletPhoto);
+  const newWallet = { walletType, walletAmount, walletPhoto, walletTotalIncomes, walletTotalExpenses};
   wallets.push(newWallet);
   localStorage.setItem('wallets', JSON.stringify(wallets));
   generateAllWalletsHTML();
@@ -227,9 +229,15 @@ function handleExpenseFormSubmit(e) {
   const expenseAmount = document.querySelector('#expense-amount').value;
   const categoryIndex = document.querySelector('#category-value').value;
   const newExpense = { expenseName, expenseDate, expenseAmount, categoryIndex };
+
   categories[categoryIndex].categoryAmount = parseInt(categories[categoryIndex].categoryAmount) + parseInt(expenseAmount);
+  wallets[currentWalletIndex].walletTotalExpenses = parseInt(wallets[currentWalletIndex].walletTotalExpenses) + parseInt(expenseAmount);
+  localStorage.setItem('wallets', JSON.stringify(wallets));
   localStorage.setItem('categories', JSON.stringify(categories));
+  generateAllWalletsHTML();
   generateAllCategoriesHTML();
+  console.log(currentWalletIndex);
+  generateCurrentWallet(currentWalletIndex);
   expenses.unshift(newExpense);
   localStorage.setItem('expenses', JSON.stringify(expenses));
   generateAllExpensesHTML();
@@ -265,6 +273,7 @@ walletsSelected.forEach((wallet, index) => {
   wallet.addEventListener('click', (event) => {
     const walletNameSelected = event.target.querySelector(".title").textContent;
     if(walletNameSelected) {
+      currentWalletIndex = index;
       generateCurrentWallet(index);
       
     }
@@ -280,7 +289,31 @@ function generateCurrentWallet(index) {
   <div class="right-text">
     <p>${wallets[index].walletType}</p>
   </div>
-</section>`;
+</section>
+<section class="balance">
+                <div class="profit">
+                  <section class="income ident">
+                    <div class="left-panel">
+                      <img src="assets/Profit.png" alt="portofel" width="40px" height="40px">
+                    </div>
+                    <div class="right-panel">
+                      <p class="subtitle">Total Incomes</p>
+                      <p class="title">${wallets[index].walletTotalIncomes} RON</p>
+                    </div>
+                  </section>
+                </div>
+                <div class="profit">
+                  <section class="income ident">
+                    <div class="left-panel">
+                      <img src="assets/Loss.png" alt="portofel" width="40px" height="40px">
+                    </div>
+                    <div class="right-panel">
+                      <p class="subtitle">Total Expenses</p>
+                      <p class="title">${wallets[index].walletTotalExpenses} RON</p>
+                    </div>
+                  </section>
+                </div>
+              </section>`;
 currentWalletContainer.innerHTML = currentWalletHTML;
 }
 
