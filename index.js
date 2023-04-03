@@ -9,7 +9,7 @@ function generateWalletHTML(wallet) {
   return `
     <section class="wallet-types">
       <div class="left-panel">
-        <img src="assets/portofel.png" alt="portofel" width="40px" height="40px">
+        <img src="${wallet.walletPhoto}" alt="portofel" width="40px" height="40px">
       </div>
       <div class="right-panel">
         <p class="title">${wallet.walletType}</p>
@@ -33,7 +33,9 @@ function handleFormSubmit(e) {
   e.preventDefault();
   const walletType = document.querySelector('#wallet-type').value;
   const walletAmount = document.querySelector('#wallet-amount').value;
-  const newWallet = { walletType, walletAmount };
+  const walletPhoto = document.querySelector('input[name="photo"]:checked').value;
+  console.log(walletPhoto);
+  const newWallet = { walletType, walletAmount, walletPhoto};
   wallets.push(newWallet);
   localStorage.setItem('wallets', JSON.stringify(wallets));
   generateAllWalletsHTML();
