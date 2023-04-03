@@ -35,6 +35,54 @@
           <button id="close-modal" class="close">Close</button>
         </form>
       </div>
+
+      <div id="category-modal" class="category-modal" style="display: none;">
+        <h2>Add category</h2>
+        <form id="category-form">
+          <label for="category-type">Category Type:</label>
+          <input type="text" id="category-type" name="category-type"><br>
+          <label for="category-amount">Amount in RON:</label>
+          <input type="number" id="category-amount" name="category-amount"><br>
+          <form>
+            <div>
+              <label for="photo1">
+                <img src="assets/Utility.png" alt="Utility">
+              </label>
+              <input type="radio" id="photo1" name="photo-category" value="assets/Utility.png">
+            </div>
+          
+            <div>
+              <label for="photo2">
+                <img src="assets/Saving.png" alt="Saving">
+              </label>
+              <input type="radio" id="photo2" name="photo-category" value="assets/Saving.png">
+            </div>
+
+            <div>
+              <label for="photo3">
+                <img src="assets/Shopping.png" alt="Shopping">
+              </label>
+              <input type="radio" id="photo3" name="photo-category" value="assets/Shopping.png">
+            </div>
+
+            <div>
+              <label for="photo4">
+                <img src="assets/Personal.png" alt="Personal">
+              </label>
+              <input type="radio" id="photo4" name="photo-category" value="assets/Personal.png">
+            </div>
+
+            <div>
+              <label for="photo5">
+                <img src="assets/Health.png" alt="Health">
+              </label>
+              <input type="radio" id="photo5" name="photo-category" value="assets/Health.png">
+            </div>
+                    
+          <input type="submit" value="Add Category">
+          <button id="close-categoryModal" class="closeCategoryModal">Close</button>
+        </form>
+      </div>
       
       <aside class="aside">
         <h1 class="logo"><span class="blue-text">Bud</span><span class="black-text">get</span></h1>
@@ -44,7 +92,7 @@
             <button class="right-button" id="open-modal"><span class="plus-sign">+</span></button>
           </section>
           
-          <section class="wallet-types" id="new-wallet" style="display: none">
+          <!-- <section class="wallet-types" id="new-wallet" style="display: none">
             <div class="left-panel">
               <img src="assets/Economies.png" alt="econmies" width="40px" height="40px">
             </div>
@@ -52,7 +100,7 @@
               <p class="title" id="new-wallet-type"></p>
               <p class="subtitle" id="new-wallet-amount"></p>
             </div>
-          </section>
+          </section> -->
           <div id="wallets-container"></div>
         </section>
         
@@ -61,53 +109,11 @@
         <section class="categories">
           <section class="add-wallet">
             <p class="left-text">Categories</p>
-            <button class="right-button"><span class="plus-sign">+</span></button>
+            <button class="right-button" id="open-categoryModal"><span class="plus-sign">+</span></button>
           </section>
-          <section class="wallet-types">
-            <div class="left-panel">
-              <img src="assets/Utility.png" alt="utility" width="40px" height="40px">
-            </div>
-            <div class="right-panel">
-              <p class="title">Utility</p>
-              <p class="subtitle">250 RON</p>
-            </div>
-          </section>
-          <section class="wallet-types">
-            <div class="left-panel">
-              <img src="assets/Saving.png" alt="utility" width="40px" height="40px">
-            </div>
-            <div class="right-panel">
-              <p class="title">Saving</p>
-              <p class="subtitle">1000 RON</p>
-            </div>
-          </section>
-          <section class="wallet-types">
-            <div class="left-panel">
-              <img src="assets/Shopping.png" alt="utility" width="40px" height="40px">
-            </div>
-            <div class="right-panel">
-              <p class="title">Shopping</p>
-              <p class="subtitle">430 RON</p>
-            </div>
-          </section>
-          <section class="wallet-types">
-            <div class="left-panel">
-              <img src="assets/Personal.png" alt="personal" width="40px" height="40px">
-            </div>
-            <div class="right-panel">
-              <p class="title">Personal</p>
-              <p class="subtitle">150 RON</p>
-            </div>
-          </section>
-          <section class="wallet-types">
-            <div class="left-panel">
-              <img src="assets/Health.png" alt="utility" width="40px" height="40px">
-            </div>
-            <div class="right-panel">
-              <p class="title">Health</p>
-              <p class="subtitle">70 RON</p>
-            </div>
-          </section>
+
+         
+          <div id="categories-container"></div>
         </section>
       </aside>
       <main>

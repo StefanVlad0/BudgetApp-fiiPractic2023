@@ -101,6 +101,65 @@ buttons.forEach(button => {
   });
 });
 
+
+/// CATEGORY ////
+
+let categories = JSON.parse(localStorage.getItem('categories')) || [];
+
+const categoryContainer = document.querySelector('#categories-container');
+const categoryForm = document.querySelector('#category-form');
+
+
+function generateCategoryHTML(categories) {
+  return `
+    <section class="wallet-types">
+      <div class="left-panel">
+        <img src="${categories.categoryPhoto}" alt="portofel" width="40px" height="40px">
+      </div>
+      <div class="right-panel">
+        <p class="title">${categories.categoryType}</p>
+        <p class="subtitle">${categories.categoryAmount} RON</p>
+      </div>
+    </section>
+  `;
+}
+
+function openCategoryModal() {
+  document.querySelector('#category-modal').style.display = 'block';
+}
+document.querySelector('#open-categoryModal').addEventListener('click', openCategoryModal);
+
+function closeCategoryModal(event) {
+  event.preventDefault()
+  document.querySelector('#category-modal').style.display = 'none';
+}
+
+function generateAllCategoriesHTML() {
+  let categoriesHTML = '';
+  categories.forEach(category => {
+    categoriesHTML += generateCategoryHTML(category);
+  });
+  categoryContainer.innerHTML = categoriesHTML;
+}
+
+function handleCategoryFormSubmit(e) {
+  e.preventDefault();
+  const categoryType = document.querySelector('#category-type').value;
+  const categoryAmount = document.querySelector('#category-amount').value;
+  const categoryPhoto = document.querySelector('input[name="photo-category"]:checked').value;
+  const newCategory = { categoryType, categoryAmount, categoryPhoto};
+  categories.push(newCategory);
+  localStorage.setItem('categories', JSON.stringify(categories));
+  generateAllCategoriesHTML();
+  closeCategoryModal(e);
+}
+
+
+categoryForm.addEventListener('submit', handleCategoryFormSubmit);
+document.querySelector('.closeCategoryModal').addEventListener('click', closeCategoryModal);
+
+generateAllCategoriesHTML();
+
 // const buttons = document.querySelectorAll(".buttons");
 
 // buttons.forEach(button => {
