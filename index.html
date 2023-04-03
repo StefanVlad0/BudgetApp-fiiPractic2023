@@ -16,6 +16,21 @@
           <input type="text" id="wallet-type" name="wallet-type"><br>
           <label for="wallet-amount">Amount in RON:</label>
           <input type="number" id="wallet-amount" name="wallet-amount"><br>
+          <form>
+            <div>
+              <label for="photo1">
+                <img src="assets/portofel.png" alt="Blue wallet">
+              </label>
+              <input type="radio" id="photo1" name="photo" value="assets/portofel.png">
+            </div>
+          
+            <div>
+              <label for="photo2">
+                <img src="assets/Economies.png" alt="Green wallet">
+              </label>
+              <input type="radio" id="photo2" name="photo" value="assets/Economies.png">
+            </div>
+                    
           <input type="submit" value="Add Wallet">
           <button id="close-modal" class="close">Close</button>
         </form>
@@ -28,24 +43,7 @@
             <p class="left-text">Wallets</p>
             <button class="right-button" id="open-modal"><span class="plus-sign">+</span></button>
           </section>
-          <section class="wallet-types">
-            <div class="left-panel">
-              <img src="assets/portofel.png" alt="portofel" width="40px" height="40px">
-            </div>
-            <div class="right-panel">
-              <p class="title">Home Wallet</p>
-              <p class="subtitle">400 RON</p>
-            </div>
-          </section>
-          <section class="wallet-types">
-            <div class="left-panel">
-              <img src="assets/Economies.png" alt="econmies" width="40px" height="40px">
-            </div>
-            <div class="right-panel">
-              <p class="title">Economies</p>
-              <p class="subtitle">1000 RON</p>
-            </div>
-          </section>
+          
           <section class="wallet-types" id="new-wallet" style="display: none">
             <div class="left-panel">
               <img src="assets/Economies.png" alt="econmies" width="40px" height="40px">
