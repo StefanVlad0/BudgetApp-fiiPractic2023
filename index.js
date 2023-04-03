@@ -1,3 +1,6 @@
+
+////// WALLETS /////
+
 let wallets = JSON.parse(localStorage.getItem('wallets')) || [];
 
 // Select the wallets container and the wallet form
@@ -64,6 +67,10 @@ document.querySelector('.close').addEventListener('click', closeModal);
 
 // Generate HTML for all wallets on page load
 generateAllWalletsHTML();
+
+
+
+////// EXPENSE BUTTONS //////////
 
 const buttons = document.querySelectorAll(".buttons");
 
@@ -160,122 +167,82 @@ document.querySelector('.closeCategoryModal').addEventListener('click', closeCat
 
 generateAllCategoriesHTML();
 
-// const buttons = document.querySelectorAll(".buttons");
 
-// buttons.forEach(button => {
-//   const textForEdit = document.createElement('div');
-//   textForEdit.textContent = "In edit mode";
-//   textForEdit.style.color = "green";
-//   textForEdit.style.display = "none";
-//   button.appendChild(textForEdit);
-  
-//   let visible = false;
-  
-//   const editButton = button.querySelector('.edit');
-//   const deleteButton = button.querySelector('.delete');
-  
-//   const toggleVisibility = () => {
-//     visible = !visible;
-//     textForEdit.style.display = visible ? "block" : "none";
-//   };
-  
-//   editButton.addEventListener('click', toggleVisibility);
-//   deleteButton.addEventListener('click', toggleVisibility);
-// });
+ ///////// EXPENSE ////////////
+ let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+ const expenseForm = document.querySelector('#expense-form');
+ const expenseContainer = document.querySelector('#expense-container');
+
+ function openExpenseModal() {
+  updateCategoryDropdown();
+  document.querySelector('#expense-modal').style.display = 'block';
+}
 
 
-// let inEditMode = false;
-// let inDeleteMode = false;
+function generateExpenseHTML(expense) {
+  return `
+  <div class="expense">
+  <div class="profit line-expense">
+    <section class="income">
+      <div class="left-panel">
+        <img src="${categories[expense.categoryIndex].categoryPhoto}" alt="portofel" width="40px" height="40px">
+      </div>
+      <div class="right-panel">
+        <p class="title">${expense.expenseName}</p>
+        <p class="subtitle">${expense.expenseDate}</p>
+      </div>
+    </section>
+    <section class="income">
+      <p class="title red">- ${expense.expenseAmount} RON</p>
+      <div class="buttons">
+        <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
+        <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
+      </div>
+    </section>
+  </div> 
+</div>
+  `;
+}
 
-// const editClickHandler = () => {
+document.querySelector('#open-expenseModal').addEventListener('click', openExpenseModal);
 
-//   inEditMode = !inEditMode;
-//   inDeleteMode = false;
-//   if(inEditMode) {
-//     editModeContainer.textContent = "In edit mode";
-//     editModeContainer.style.color = "green";
-//   }
-//   editModeContainer.style.visibility = inEditMode ? "visible" : "hidden";
-  
-//   btnEdit.style.color = inEditMode ? "green" : "black";
-  
-//   console.log("Edit value is: " + inEditMode);
-//   console.log("Delete value is: " + inDeleteMode);
-// };
+ function closeExpenseModal(event) {
+  event.preventDefault()
+  document.querySelector('#expense-modal').style.display = 'none';
+}
 
-// const deleteClickHandler = () => {
-//   inDeleteMode = !inDeleteMode;
-//   inEditMode  = false;
-//   if(inDeleteMode) {
-//     editModeContainer.textContent = "In delete mode";
-//     editModeContainer.style.color = "red";
-//   }
-//   editModeContainer.style.visibility = inDeleteMode ? "visible" : "hidden";
-//   btnEdit.style.color = inEditMode ? "green" : "black";
- 
-//   console.log("Edit value is: " + inEditMode);
-//   console.log("Delete value is: " + inDeleteMode);
-// };
+function generateAllExpensesHTML() {
+  let expenseHTML = '';
+  expenses.forEach(expense => {
+    expenseHTML += generateExpenseHTML(expense);
+  });
+  expenseContainer.innerHTML = expenseHTML;
+}
+
+function handleExpenseFormSubmit(e) {
+  e.preventDefault();
+  const expenseName = document.querySelector('#expense-name').value;
+  const expenseDate = document.querySelector('#expense-date').value;
+  const expenseAmount = document.querySelector('#expense-amount').value;
+  const categoryIndex = document.querySelector('#category-value').value;
+  const newExpense = { expenseName, expenseDate, expenseAmount, categoryIndex };
+  expenses.unshift(newExpense);
+  localStorage.setItem('expenses', JSON.stringify(expenses));
+  generateAllExpensesHTML();
+  closeExpenseModal(e);
+}
 
 
-// btnEdit.addEventListener("click", editClickHandler);
-// btnDelete.addEventListener("click", deleteClickHandler);
+ expenseForm.addEventListener('submit', handleExpenseFormSubmit);
+ document.querySelector('.closeExpenseModal').addEventListener('click', closeExpenseModal);
 
-// btnDelete.addEventListener("click", () => {
-//   btnEdit.removeEventListener("click", editClickHandler);
-// });
+ function updateCategoryDropdown() {
+  const categoryDropdown = document.querySelector('#category-value');
+  categoryDropdown.innerHTML = `<option value="">--Select--</option>`;
+  for (let i = 0; i < categories.length; i++) {
+    categoryDropdown.innerHTML += `<option value="${i}">${categories[i].categoryType}</option>`;
+  }
+}
 
-// const categories = [
-//   {
-//     name: "Utility",
-//     balance: 250,
-//   },
-//   {
-//     name: "Saving",
-//     balance: 1000,
-//   },
-//   {
-//     name: "Shopping",
-//     balance: 430,
-//   },
-//   {
-//     name: "Personal",
-//     balance: 150,
-//   },
-//   {
-//     name: "Health",
-//     balance: 70,
-//   },
-// ];
-
-// const renderWidget = (title, items) => {
-//   const renderedItems = items.reduce((acc, { name, balance }) => {
-//     return (
-//       acc +
-//       `<li>
-//         <div class="widget-item">
-//             <div class="widget-item-name">${name}</div>
-//             <div class="widget-item-balance">${balance}</div>
-//         </div>
-//     </li>`
-//     );
-//   }, "");
-//   const content = `
-//     <div class="widget">
-//         <h2>${title}</h2>
-//         <ul class="widget-item-container">
-//             ${renderedItems}
-//         </ul>
-//     </div
-// `;
-//   console.log(content);
-//   return content;
-// };
-
-// (function () {
-//   const wallets = JSON.parse(localStorage.getItem("wallets"));
-//   console.log(wallets, typeof wallets);
-//   const aside = document.querySelector(".aside");
-//   aside.innerHTML += renderWidget("Wallets", wallets);
-//   aside.innerHTML += renderWidget("Categories", categories);
-// })();
+updateCategoryDropdown();
+generateAllExpensesHTML();
