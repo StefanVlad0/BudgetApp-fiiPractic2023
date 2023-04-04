@@ -93,6 +93,8 @@ function addButtonsFunc() {
     const deleteButton = button.querySelector('.delete');
     
     editButton.addEventListener('click', () => {
+     
+
       inDeleteMode = false;
       inEditMode = !inEditMode;
       if(inEditMode) {
@@ -103,6 +105,18 @@ function addButtonsFunc() {
     });
     
     deleteButton.addEventListener('click', () => {
+      const expenseElement = event.target.parentNode.parentNode.parentNode.parentNode;
+      const name = expenseElement.querySelector(".title");
+      console.log(name.textContent);
+      // assuming `name` variable holds the name of the expense to be deleted
+for (let i = 0; i < expenses.length; i++) {
+  if (expenses[i].expenseName === name.textContent) {
+    expenses.splice(i, 1);
+    break; // exit loop once the expense is deleted
+  }
+}
+localStorage.setItem('expenses', JSON.stringify(expenses));
+generateAllExpensesHTML();
       inEditMode = false;
       inDeleteMode = !inDeleteMode;
       if(inDeleteMode) {
