@@ -207,35 +207,65 @@ generateAllCategoriesHTML();
 
 
 function generateExpenseHTML(expense) {
-  return `
-  <div class="expense">
-  <div class="profit line-expense">
-    <section class="income">
-      <div class="left-panel">
-        <img src="${categories[expense.categoryIndex].categoryPhoto}" alt="portofel" width="40px" height="40px">
-      </div>
-      <div class="right-panel" style="border-right: 3px solid black; padding-right: 15px;">
-        <p class="title">${expense.expenseName}</p>
-        <p class="subtitle">${expense.expenseDate}</p>
-      </div>
-      <div class="left-panel">
-      <img src="${wallets[expense.walletIndex].walletPhoto}" alt="portofel" width="40px" height="40px">
-    </div>
-    <div class="right-panel">
-      <p class="title">${wallets[expense.walletIndex].walletType}</p>
-    </div>
-    </section>
-    <section class="income">
-      <p class="title red">- ${expense.expenseAmount} RON</p>
-      <div class="buttons">
-        <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
-        <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
-      </div>
-    </section>
-  </div> 
+  if(expense.isIncome == 1) {
+    return `
+ <div class="expense">
+ <div class="profit line-expense">
+   <section class="income">
+     <div class="left-panel">
+       <img src="${categories[expense.categoryIndex].categoryPhoto}" alt="portofel" width="40px" height="40px">
+     </div>
+     <div class="right-panel" style="border-right: 3px solid black; padding-right: 15px;">
+       <p class="title">${expense.expenseName}</p>
+       <p class="subtitle">${expense.expenseDate}</p>
+     </div>
+     <div class="left-panel">
+     <img src="${wallets[expense.walletIndex].walletPhoto}" alt="portofel" width="40px" height="40px">
+   </div>
+   <div class="right-panel">
+     <p class="title">${wallets[expense.walletIndex].walletType}</p>
+   </div>
+   </section>
+   <section class="income">
+     <p class="title green">+ ${expense.expenseAmount} RON</p>
+     <div class="buttons">
+       <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
+       <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
+     </div>
+   </section>
+ </div> 
 </div>
-  `;
-  
+ `;
+  }
+ return `
+ <div class="expense">
+ <div class="profit line-expense">
+   <section class="income">
+     <div class="left-panel">
+       <img src="${categories[expense.categoryIndex].categoryPhoto}" alt="portofel" width="40px" height="40px">
+     </div>
+     <div class="right-panel" style="border-right: 3px solid black; padding-right: 15px;">
+       <p class="title">${expense.expenseName}</p>
+       <p class="subtitle">${expense.expenseDate}</p>
+     </div>
+     <div class="left-panel">
+     <img src="${wallets[expense.walletIndex].walletPhoto}" alt="portofel" width="40px" height="40px">
+   </div>
+   <div class="right-panel">
+     <p class="title">${wallets[expense.walletIndex].walletType}</p>
+   </div>
+   </section>
+   <section class="income">
+     <p class="title red">- ${expense.expenseAmount} RON</p>
+     <div class="buttons">
+       <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
+       <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
+     </div>
+   </section>
+ </div> 
+</div>
+ `;
+ 
 }
 
 document.querySelector('#open-expenseModal').addEventListener('click', openExpenseModal);
@@ -260,7 +290,8 @@ function handleExpenseFormSubmit(e) {
   const expenseAmount = document.querySelector('#expense-amount').value;
   const categoryIndex = document.querySelector('#category-value').value;
   const walletIndex = currentWalletIndex;
-  const newExpense = { expenseName, expenseDate, expenseAmount, categoryIndex, walletIndex };
+  const isIncome = 0;
+  const newExpense = { expenseName, expenseDate, expenseAmount, categoryIndex, walletIndex, isIncome };
 
   categories[categoryIndex].categoryAmount = parseInt(categories[categoryIndex].categoryAmount) + parseInt(expenseAmount);
   wallets[currentWalletIndex].walletTotalExpenses = parseInt(wallets[currentWalletIndex].walletTotalExpenses) + parseInt(expenseAmount);
@@ -289,6 +320,126 @@ function handleExpenseFormSubmit(e) {
 }
 
 updateCategoryDropdown();
+generateAllExpensesHTML();
+
+
+///////// INCOMES ////////////
+//let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+const incomeForm = document.querySelector('#income-form');
+//const expenseContainer = document.querySelector('#expense-container');
+
+function openIncomeModal() {
+ updateCategoryDropdown();
+ document.querySelector('#income-modal').style.display = 'block';
+}
+
+
+function generateIncomeHTML(expense) {
+  if(expense.isIncome == 1) {
+    return `
+ <div class="expense">
+ <div class="profit line-expense">
+   <section class="income">
+     <div class="left-panel">
+       <img src="${categories[expense.categoryIndex].categoryPhoto}" alt="portofel" width="40px" height="40px">
+     </div>
+     <div class="right-panel" style="border-right: 3px solid black; padding-right: 15px;">
+       <p class="title">${expense.expenseName}</p>
+       <p class="subtitle">${expense.expenseDate}</p>
+     </div>
+     <div class="left-panel">
+     <img src="${wallets[expense.walletIndex].walletPhoto}" alt="portofel" width="40px" height="40px">
+   </div>
+   <div class="right-panel">
+     <p class="title">${wallets[expense.walletIndex].walletType}</p>
+   </div>
+   </section>
+   <section class="income">
+     <p class="title green">- ${expense.expenseAmount} RON</p>
+     <div class="buttons">
+       <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
+       <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
+     </div>
+   </section>
+ </div> 
+</div>
+ `;
+  }
+ return `
+ <div class="expense">
+ <div class="profit line-expense">
+   <section class="income">
+     <div class="left-panel">
+       <img src="${categories[expense.categoryIndex].categoryPhoto}" alt="portofel" width="40px" height="40px">
+     </div>
+     <div class="right-panel" style="border-right: 3px solid black; padding-right: 15px;">
+       <p class="title">${expense.expenseName}</p>
+       <p class="subtitle">${expense.expenseDate}</p>
+     </div>
+     <div class="left-panel">
+     <img src="${wallets[expense.walletIndex].walletPhoto}" alt="portofel" width="40px" height="40px">
+   </div>
+   <div class="right-panel">
+     <p class="title">${wallets[expense.walletIndex].walletType}</p>
+   </div>
+   </section>
+   <section class="income">
+     <p class="title red">- ${expense.expenseAmount} RON</p>
+     <div class="buttons">
+       <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
+       <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
+     </div>
+   </section>
+ </div> 
+</div>
+ `;
+ 
+}
+
+document.querySelector('#open-incomeModal').addEventListener('click', openIncomeModal);
+
+function closeIncomeModal(event) {
+ event.preventDefault()
+ document.querySelector('#income-modal').style.display = 'none';
+}
+
+function handleIncomeFormSubmit(e) {
+ e.preventDefault();
+ const expenseName = document.querySelector('#income-name').value;
+ const expenseDate = document.querySelector('#income-date').value;
+ const expenseAmount = document.querySelector('#income-amount').value;
+ const categoryIndex = document.querySelector('#income-category-value').value;
+ const walletIndex = currentWalletIndex;
+ const isIncome = 1;
+ const newExpense = { expenseName, expenseDate, expenseAmount, categoryIndex, walletIndex, isIncome };
+
+ categories[categoryIndex].categoryAmount = parseInt(categories[categoryIndex].categoryAmount) + parseInt(expenseAmount);
+ wallets[currentWalletIndex].walletTotalIncomes = parseInt(wallets[currentWalletIndex].walletTotalIncomes) + parseInt(expenseAmount);
+ localStorage.setItem('wallets', JSON.stringify(wallets));
+ localStorage.setItem('categories', JSON.stringify(categories));
+ generateAllWalletsHTML();
+ generateAllCategoriesHTML();
+ console.log(currentWalletIndex);
+ generateCurrentWallet(currentWalletIndex);
+ expenses.unshift(newExpense);
+ localStorage.setItem('expenses', JSON.stringify(expenses));
+ generateAllExpensesHTML();
+ closeExpenseModal(e);
+}
+
+
+incomeForm.addEventListener('submit', handleIncomeFormSubmit);
+document.querySelector('.closeIncomeModal').addEventListener('click', closeIncomeModal);
+
+function updateIncomeCategoryDropdown() {
+ const categoryDropdown = document.querySelector('#income-category-value');
+ categoryDropdown.innerHTML = `<option value="">--Select--</option>`;
+ for (let i = 0; i < categories.length; i++) {
+   categoryDropdown.innerHTML += `<option value="${i}">${categories[i].categoryType}</option>`;
+ }
+}
+
+updateIncomeCategoryDropdown();
 generateAllExpensesHTML();
 
 
