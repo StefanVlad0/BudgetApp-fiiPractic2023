@@ -84,6 +84,23 @@
         </form>
       </div>
 
+      <div id="income-modal" class="income-modal" style="display: none;">
+        <h2>Add income</h2>
+        <form id="income-form">          
+          <label for="income-name">Income name:</label>
+          <input type="text" id="income-name" name="income-name"><br>
+          <label for="income-date">Date:</label>
+          <input type="text" id="income-date" name="income-date"><br>
+          <label for="income-amount">Amount in RON:</label>
+          <input type="number" id="income-amount" name="income-amount"><br>
+          <label for="income-category-value">Select a category:</label>
+          <select id="income-category-value" name="income-category-value">
+            
+          </select>
+          <input type="submit" value="Add Income">
+          <button id="close-incomeModal" class="closeIncomeModal">Close</button>
+        </form>
+      </div>
 
       <div id="expense-modal" class="expense-modal" style="display: none;">
         <h2>Add expense</h2>
@@ -161,6 +178,7 @@
                 <p class="question">How much did you spend today?</p>
               </div>
               <div>
+                <button class="log-expense" id="open-incomeModal"><span class="add-expense-text">+ Log Incomes</span></button>
                 <button class="log-expense" id="open-expenseModal"><span class="add-expense-text">+ Log Expense</span></button>
               </div>
             </header>
