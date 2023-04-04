@@ -93,8 +93,14 @@ function addButtonsFunc() {
     const deleteButton = button.querySelector('.delete');
     
     editButton.addEventListener('click', () => {
-     
-
+      const expenseElement = event.target.parentNode.parentNode.parentNode.parentNode;
+      const name = expenseElement.querySelector(".title");
+      for (let i = 0; i < expenses.length; i++) {
+        if (expenses[i].expenseName === name.textContent) {
+          openEditExpenseModal(i);
+          break; // exit loop once the expense is deleted
+        }
+      }
       inDeleteMode = false;
       inEditMode = !inEditMode;
       if(inEditMode) {
@@ -285,6 +291,66 @@ function handleExpenseFormSubmit(e) {
 updateCategoryDropdown();
 generateAllExpensesHTML();
 
+
+///// EDIT EXPENSES //////
+
+let indexOf = 0;
+
+const editExpenseForm = document.querySelector('#edit-expense-form');
+
+function updateEditCategoryDropdown() {
+  const categoryDropdown = document.querySelector('#edit-category-value');
+  categoryDropdown.innerHTML = `<option value="">--Select--</option>`;
+  for (let i = 0; i < categories.length; i++) {
+    categoryDropdown.innerHTML += `<option value="${i}">${categories[i].categoryType}</option>`;
+  }
+}
+
+function openEditExpenseModal(index) {
+  indexOf = index;
+  //console.log(index);
+  ////////////////////updateCategoryDropdown();
+  updateEditCategoryDropdown();
+  document.querySelector('#edit-expense-name').value = expenses[index].expenseName;
+ document.querySelector('#edit-expense-date').value = expenses[index].expenseDate;
+  document.querySelector('#edit-expense-amount').value = expenses[index].expenseAmount;
+  document.querySelector('#edit-expense-modal').style.display = 'block';
+}
+
+function closeEditExpenseModal(event) {
+  event.preventDefault()
+  document.querySelector('#edit-expense-modal').style.display = 'none';
+}
+document.querySelector('.edit-closeExpenseModal').addEventListener('click', closeEditExpenseModal);
+
+function handleEditExpenseFormSubmit(e) {
+  e.preventDefault();
+  const editExpenseName = document.querySelector('#edit-expense-name').value;
+  const editExpenseDate = document.querySelector('#edit-expense-date').value;
+  const editExpenseAmount = document.querySelector('#edit-expense-amount').value;
+  const editEategoryIndex = document.querySelector('#edit-category-value').value;
+  //const editWalletIndex = currentWalletIndex;
+  expenses[indexOf].expenseName = editExpenseName;
+  expenses[indexOf].expenseDate = editExpenseDate;
+  expenses[indexOf].expenseAmount = editExpenseAmount;
+  expenses[indexOf].categoryIndex = editEategoryIndex;
+  ///const newExpense = { expenseName, expenseDate, expenseAmount, categoryIndex, walletIndex };
+
+  // categories[categoryIndex].categoryAmount = parseInt(categories[categoryIndex].categoryAmount) + parseInt(expenseAmount);
+  // wallets[currentWalletIndex].walletTotalExpenses = parseInt(wallets[currentWalletIndex].walletTotalExpenses) + parseInt(expenseAmount);
+  // localStorage.setItem('wallets', JSON.stringify(wallets));
+  // localStorage.setItem('categories', JSON.stringify(categories));
+  // generateAllWalletsHTML();
+  // generateAllCategoriesHTML();
+  // console.log(currentWalletIndex);
+  // generateCurrentWallet(currentWalletIndex);
+  // expenses.unshift(newExpense);
+  localStorage.setItem('expenses', JSON.stringify(expenses));
+  generateAllExpensesHTML();
+  closeEditExpenseModal(e);
+}
+
+editExpenseForm.addEventListener('submit', handleEditExpenseFormSubmit);
 
 
 ///// CURRENT WALLET //////
