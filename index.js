@@ -215,7 +215,7 @@ function generateExpenseHTML(expense) {
      <div class="left-panel">
        <img src="${categories[expense.categoryIndex].categoryPhoto}" alt="portofel" width="40px" height="40px">
      </div>
-     <div class="right-panel" style="border-right: 3px solid black; padding-right: 15px;">
+     <div class="right-panel" id="right-border">
        <p class="title">${expense.expenseName}</p>
        <p class="subtitle">${expense.expenseDate}</p>
      </div>
@@ -227,7 +227,7 @@ function generateExpenseHTML(expense) {
    </div>
    </section>
    <section class="income">
-     <p class="title green">+ ${expense.expenseAmount} RON</p>
+     <p class="green title2">+ ${expense.expenseAmount} RON</p>
      <div class="buttons">
        <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
        <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
@@ -244,7 +244,7 @@ function generateExpenseHTML(expense) {
      <div class="left-panel">
        <img src="${categories[expense.categoryIndex].categoryPhoto}" alt="portofel" width="40px" height="40px">
      </div>
-     <div class="right-panel" style="border-right: 3px solid black; padding-right: 15px;">
+     <div class="right-panel" id="right-border">
        <p class="title">${expense.expenseName}</p>
        <p class="subtitle">${expense.expenseDate}</p>
      </div>
@@ -256,7 +256,7 @@ function generateExpenseHTML(expense) {
    </div>
    </section>
    <section class="income">
-     <p class="title red">- ${expense.expenseAmount} RON</p>
+     <p class="title2 red">- ${expense.expenseAmount} RON</p>
      <div class="buttons">
        <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
        <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
@@ -343,7 +343,7 @@ function generateIncomeHTML(expense) {
      <div class="left-panel">
        <img src="${categories[expense.categoryIndex].categoryPhoto}" alt="portofel" width="40px" height="40px">
      </div>
-     <div class="right-panel" style="border-right: 3px solid black; padding-right: 15px;">
+     <div class="right-panel" id="right-border">
        <p class="title">${expense.expenseName}</p>
        <p class="subtitle">${expense.expenseDate}</p>
      </div>
@@ -355,7 +355,7 @@ function generateIncomeHTML(expense) {
    </div>
    </section>
    <section class="income">
-     <p class="title green">- ${expense.expenseAmount} RON</p>
+     <p class="green title2">- ${expense.expenseAmount} RON</p>
      <div class="buttons">
        <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
        <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
@@ -372,7 +372,7 @@ function generateIncomeHTML(expense) {
      <div class="left-panel">
        <img src="${categories[expense.categoryIndex].categoryPhoto}" alt="portofel" width="40px" height="40px">
      </div>
-     <div class="right-panel" style="border-right: 3px solid black; padding-right: 15px;">
+     <div class="right-panel" id="right-border">
        <p class="title">${expense.expenseName}</p>
        <p class="subtitle">${expense.expenseDate}</p>
      </div>
@@ -384,7 +384,7 @@ function generateIncomeHTML(expense) {
    </div>
    </section>
    <section class="income">
-     <p class="title red">- ${expense.expenseAmount} RON</p>
+     <p class="title2 red">- ${expense.expenseAmount} RON</p>
      <div class="buttons">
        <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
        <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
@@ -585,4 +585,15 @@ function myFunction() {
 
   // After 3 seconds, remove the show class from DIV
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+let icon = document.getElementById("dark");
+
+icon.onclick = function() {
+  document.body.classList.toggle("dark-theme");
+  if(document.body.classList.contains("dark-theme")) {
+    icon.src = "assets/sun.png";
+  }else{
+    icon.src = "assets/moon.png";
+  }
 }

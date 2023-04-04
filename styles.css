@@ -4,6 +4,20 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+:root {
+  --primary-color: white;
+  --secondary-color: black;
+  --third-color: #F8F8F8;
+  --forth-color: #F3F4F6;
+}
+
+.dark-theme{
+  --primary-color: black;
+  --secondary-color:white;
+  --third-color: #222222;
+  --forth-color: black;
+}
+
 #my-modal {
   position: absolute;
   top: 50%;
@@ -11,7 +25,7 @@
   transform: translate(-50%, -50%);
   width: 50%;
   max-width: 600px;
-  background-color: white;
+  background-color: var(--primary-color);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -25,7 +39,7 @@
   transform: translate(-50%, -50%);
   width: 50%;
   max-width: 600px;
-  background-color: white;
+  background-color: var(--primary-color);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -39,7 +53,7 @@
   transform: translate(-50%, -50%);
   width: 50%;
   max-width: 600px;
-  background-color: white;
+  background-color: var(--primary-color);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -53,7 +67,7 @@
   transform: translate(-50%, -50%);
   width: 50%;
   max-width: 600px;
-  background-color: white;
+  background-color: var(--primary-color);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -67,7 +81,7 @@
   transform: translate(-50%, -50%);
   width: 50%;
   max-width: 600px;
-  background-color: white;
+  background-color: var(--primary-color);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -75,7 +89,7 @@
 }
 
 .wallet-types:hover {
-  background-color: #F8F8F8;
+  background-color: var(--third-color);
 }
 
 .blue-text {
@@ -84,6 +98,7 @@
 }
 
 .history-text {
+  color: var(--secondary-color);
   font-size: 20px;
   font-weight: 600;
 }
@@ -100,7 +115,7 @@
 }
 
 .black-text {
-  color: black;
+  color: var(--secondary-color);
 }
 
 .categories {
@@ -130,6 +145,7 @@
 }
 
 .current-wallet {
+  color: var(--secondary-color);
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -140,11 +156,23 @@
   display: flex;
   align-items: center;
   flex-grow: 1;
-  background-color: white;
+  background-color: var(--primary-color);
   border-radius: 8px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-  border: 1px solid #F3F4F6;
+  border: 1px solid var(--forth-color);
   
+}
+
+#dark {
+  padding-top: 45px;
+  padding-right: 56px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+#right-border {
+  border-right: 3px solid var(--secondary-color); padding-right: 15px;
 }
 
 .green {
@@ -175,7 +203,7 @@
   display: flex;
   align-items: center;
   flex-grow: 1;
-  background-color: white;
+  background-color: var(--primary-color);
   border-radius: 8px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border: 1px solid #F3F4F6;
@@ -186,6 +214,12 @@
   flex-direction: row;
   align-items: center;
   gap: 16px;
+}
+
+.row-icon {
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-between;
 }
 
 .right-panel {
@@ -212,6 +246,12 @@ font-size: 36px;
 }
 
 .title {
+  color: var(--secondary-color);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.title2 {
   font-size: 20px;
   font-weight: 600;
 }
@@ -223,6 +263,7 @@ font-size: 36px;
 }
 
 .left-text {
+  color: var(--secondary-color);
   margin-left: 56px;
   font-weight: 700;
   font-size: 24px;
@@ -271,7 +312,7 @@ font-size: 36px;
 
 .aside {
   flex: 0 1 25%;
-  background-color: #FFFFFF;
+  background-color: var(--primary-color);
 }
 
 .aside ul {
@@ -281,7 +322,7 @@ font-size: 36px;
 
 main {
   flex: 1 1 75%;
-  background-color: #F8F8F8;
+  background-color: var(--third-color);
 }
 
 .aside,
@@ -299,20 +340,21 @@ main {
 }
 
 .log-expense {
-  background-color: black;
+  background-color: var(--secondary-color);
   border-radius: 4px;
   padding: 10px 25px;
-  color: white;
+  color: var(--primary-color);
   transition: 0.3s;
 }
 
 .log-expense:hover {
-  background-color: white;
-  color: black;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 
 }
 
 .question {
+  color: var(--secondary-color);
   font-size: 20px;
 }
 
