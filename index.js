@@ -330,24 +330,30 @@ function handleEditExpenseFormSubmit(e) {
   const editExpenseAmount = document.querySelector('#edit-expense-amount').value;
   const editEategoryIndex = document.querySelector('#edit-category-value').value;
   //const editWalletIndex = currentWalletIndex;
-  expenses[indexOf].expenseName = editExpenseName;
-  expenses[indexOf].expenseDate = editExpenseDate;
-  expenses[indexOf].expenseAmount = editExpenseAmount;
-  expenses[indexOf].categoryIndex = editEategoryIndex;
+ 
   ///const newExpense = { expenseName, expenseDate, expenseAmount, categoryIndex, walletIndex };
 
-  // categories[categoryIndex].categoryAmount = parseInt(categories[categoryIndex].categoryAmount) + parseInt(expenseAmount);
+   categories[expenses[indexOf].categoryIndex].categoryAmount
+    = parseInt(categories[expenses[indexOf].categoryIndex].categoryAmount) - parseInt(expenses[indexOf].expenseAmount); /// Sterge suma din categoria in care a fost
+    console.log(categories[expenses[indexOf].categoryIndex].categoryAmount);
+
+    categories[editEategoryIndex].categoryAmount = parseInt(categories[editEategoryIndex].categoryAmount) + parseInt(editExpenseAmount);   //categories[expenses[indexOf].categoryIndex].categoryAmount = parseInt(categories[expenses[indexOf].categoryIndex].categoryAmount) + parseInt(editExpenseAmount);
   // wallets[currentWalletIndex].walletTotalExpenses = parseInt(wallets[currentWalletIndex].walletTotalExpenses) + parseInt(expenseAmount);
   // localStorage.setItem('wallets', JSON.stringify(wallets));
-  // localStorage.setItem('categories', JSON.stringify(categories));
+   localStorage.setItem('categories', JSON.stringify(categories));
   // generateAllWalletsHTML();
   // generateAllCategoriesHTML();
   // console.log(currentWalletIndex);
   // generateCurrentWallet(currentWalletIndex);
   // expenses.unshift(newExpense);
+  expenses[indexOf].expenseName = editExpenseName;
+  expenses[indexOf].expenseDate = editExpenseDate;
+  expenses[indexOf].expenseAmount = editExpenseAmount;
+  expenses[indexOf].categoryIndex = editEategoryIndex;
   localStorage.setItem('expenses', JSON.stringify(expenses));
   myFunction();
   generateAllExpensesHTML();
+  generateAllCategoriesHTML();
   closeEditExpenseModal(e);
 }
 
