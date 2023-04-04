@@ -190,10 +190,16 @@ function generateExpenseHTML(expense) {
       <div class="left-panel">
         <img src="${categories[expense.categoryIndex].categoryPhoto}" alt="portofel" width="40px" height="40px">
       </div>
-      <div class="right-panel">
+      <div class="right-panel" style="border-right: 3px solid black; padding-right: 15px;">
         <p class="title">${expense.expenseName}</p>
         <p class="subtitle">${expense.expenseDate}</p>
       </div>
+      <div class="left-panel">
+      <img src="${wallets[expense.walletIndex].walletPhoto}" alt="portofel" width="40px" height="40px">
+    </div>
+    <div class="right-panel">
+      <p class="title">${wallets[expense.walletIndex].walletType}</p>
+    </div>
     </section>
     <section class="income">
       <p class="title red">- ${expense.expenseAmount} RON</p>
@@ -228,7 +234,8 @@ function handleExpenseFormSubmit(e) {
   const expenseDate = document.querySelector('#expense-date').value;
   const expenseAmount = document.querySelector('#expense-amount').value;
   const categoryIndex = document.querySelector('#category-value').value;
-  const newExpense = { expenseName, expenseDate, expenseAmount, categoryIndex };
+  const walletIndex = currentWalletIndex;
+  const newExpense = { expenseName, expenseDate, expenseAmount, categoryIndex, walletIndex };
 
   categories[categoryIndex].categoryAmount = parseInt(categories[categoryIndex].categoryAmount) + parseInt(expenseAmount);
   wallets[currentWalletIndex].walletTotalExpenses = parseInt(wallets[currentWalletIndex].walletTotalExpenses) + parseInt(expenseAmount);
