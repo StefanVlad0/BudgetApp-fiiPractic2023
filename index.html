@@ -102,6 +102,24 @@
           <button id="close-expenseModal" class="closeExpenseModal">Close</button>
         </form>
       </div>
+
+      <div id="edit-expense-modal" class="edit-expense-modal" style="display: none;">
+        <h2>Edit</h2>
+        <form id="edit-expense-form">          
+          <label for="edit-expense-name">Name:</label>
+          <input type="text" id="edit-expense-name" name="edit-expense-name"><br>
+          <label for="edit-expense-date">Date:</label>
+          <input type="text" id="edit-expense-date" name="edit-expense-date"><br>
+          <label for="edit-expense-amount">Amount in RON:</label>
+          <input type="number" id="edit-expense-amount" name="edit-expense-amount"><br>
+          <label for="edit-category-value">Select a category:</label>
+          <select id="edit-category-value" name="edit-category-value">
+            
+          </select>
+          <input type="submit" value="Save modifications">
+          <button id="edit-close-expenseModal" class="edit-closeExpenseModal">Close</button>
+        </form>
+      </div>
       
       <aside class="aside">
         <h1 class="logo"><span class="blue-text">Bud</span><span class="black-text">get</span></h1>
