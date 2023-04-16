@@ -80,11 +80,11 @@ generateAllWalletsHTML();
 function addButtonsFunc() {
   const buttons = document.querySelectorAll(".buttons");
   buttons.forEach(button => {
-    const textForEdit = document.createElement('div');
-    textForEdit.textContent = "In edit mode";
-    textForEdit.style.color = "green";
-    textForEdit.style.visibility = "hidden";
-    button.appendChild(textForEdit);
+    // const textForEdit = document.createElement('div');
+    // textForEdit.textContent = "In edit mode";
+    // textForEdit.style.color = "green";
+    // textForEdit.style.visibility = "hidden";
+    // button.appendChild(textForEdit);
   
     let inEditMode = false;
     let inDeleteMode = false;
@@ -104,10 +104,10 @@ function addButtonsFunc() {
       inDeleteMode = false;
       inEditMode = !inEditMode;
       if(inEditMode) {
-        textForEdit.textContent = "In edit mode";
-        textForEdit.style.color = "green";
+        // textForEdit.textContent = "In edit mode";
+        // textForEdit.style.color = "green";
       }
-      textForEdit.style.visibility = inEditMode ? "visible" : "hidden";
+      //textForEdit.style.visibility = inEditMode ? "visible" : "hidden";
     });
     
     deleteButton.addEventListener('click', () => {
@@ -126,10 +126,10 @@ generateAllExpensesHTML();
       inEditMode = false;
       inDeleteMode = !inDeleteMode;
       if(inDeleteMode) {
-        textForEdit.textContent = "In delete mode";
-        textForEdit.style.color = "red";
+        // textForEdit.textContent = "In delete mode";
+        // textForEdit.style.color = "red";
       }
-      textForEdit.style.visibility = inDeleteMode ? "visible" : "hidden";
+      //textForEdit.style.visibility = inDeleteMode ? "visible" : "hidden";
     });
   });
 }
