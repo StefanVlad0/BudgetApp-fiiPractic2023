@@ -587,13 +587,3 @@ function myFunction() {
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 
-let icon = document.getElementById("dark");
-
-icon.onclick = function() {
-  document.body.classList.toggle("dark-theme");
-  if(document.body.classList.contains("dark-theme")) {
-    icon.src = "assets/sun.png";
-  }else{
-    icon.src = "assets/moon.png";
-  }
-}
