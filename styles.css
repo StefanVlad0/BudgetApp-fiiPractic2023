@@ -46,6 +46,8 @@
   z-index: 9999;
 }
 
+
+
 #expense-modal {
   position: absolute;
   top: 50%;
@@ -214,6 +216,244 @@
   flex-direction: row;
   align-items: center;
   gap: 16px;
+}
+
+#income-name {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#income-name-text {
+  color:var(--secondary-color);
+}
+
+#expense-name {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#wallet-type {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#edit-expense-name {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#edit-expense-date {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#edit-expense-amount {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#category-type {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#wallet-amount {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#category-amount {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#expense-name-text {
+  color:var(--secondary-color);
+}
+
+#income-date {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#expense-date {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#income-amount {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#expense-amount {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: end;
+}
+
+#close-incomeModal {
+  background-color: #F3F4F6;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 5px;
+}
+
+#close-expenseModal {
+  background-color: #F3F4F6;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 5px;
+}
+
+#edit-close-expenseModal {
+  background-color: #F3F4F6;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 5px;
+}
+
+#close-categoryModal {
+  background-color: #F3F4F6;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 5px;
+}
+
+#close-modal {
+  background-color: #F3F4F6;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 5px;
+}
+
+.add-income-text {
+  margin-bottom: 35px; margin-top: 15px;
+  color:var(--secondary-color);
+}
+
+#close-incomeModal:hover {
+  background-color: lightgray;
+}
+
+#close-expenseModal:hover {
+  background-color: lightgray;
+}
+
+#edit-close-expenseModal:hover {
+  background-color: lightgray;
+}
+
+#close-categoryModal:hover {
+  background-color: lightgray;
+}
+
+#close-modal:hover {
+  background-color: lightgray;
+}
+
+
+#submit-modal {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin-left: 10px;
+}
+
+#submit-modal:hover {
+  background-color: #45a049;
+  
+}
+
+#income-category-value {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+#category-value {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+#edit-category-value {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 25px;
 }
 
 .row-icon {
