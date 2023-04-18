@@ -191,6 +191,7 @@ generateAllCategoriesHTML();
  let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
  const expenseForm = document.querySelector('#expense-form');
  const expenseContainer = document.querySelector('#expense-container');
+ const pendingContainer = document.querySelector('#pending-container');
 
  function openExpenseModal() {
   updateCategoryDropdown();
@@ -267,12 +268,55 @@ document.querySelector('#open-expenseModal').addEventListener('click', openExpen
   document.querySelector('#expense-modal').style.display = 'none';
 }
 
+function isInFuture(yearThis, monthThis, dayThis, yearCurrent, monthCurrent, dayCurrent) {
+  var thisDate = new Date(yearThis, monthThis - 1, dayThis);
+  var currentDate = new Date(yearCurrent, monthCurrent - 1, dayCurrent);
+
+  // Compare the two dates
+  if (thisDate > currentDate) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function generateAllExpensesHTML() {
   let expenseHTML = '';
+  let pendingHTML = '';
   expenses.forEach(expense => {
-    expenseHTML += generateExpenseHTML(expense);
+    //console.log(expense.expenseDate);
+    let currentDate = new Date();
+    let day = currentDate.getDate();
+    let month = currentDate.getMonth() + 1;
+    let year = currentDate.getFullYear();
+    if (day < 10) {
+      day = '0' + day;
+    }
+    if (month < 10) {
+      month = '0' + month;
+    }
+    let formattedDate = year + '-' + month + '-' + day;
+    let dateParts = formattedDate.split('-');
+    let yearCurrent = parseInt(dateParts[0]);
+    let monthCurrent = parseInt(dateParts[1]);
+    let dayCurrent = parseInt(dateParts[2]);
+    //console.log(formattedDate);
+    console.log(yearCurrent, monthCurrent, dayCurrent);
+    let thisExpenseDate = expense.expenseDate;
+    let thisDateParts = thisExpenseDate.split('-');
+    let yearThis = parseInt(thisDateParts[0]);
+    let monthThis = parseInt(thisDateParts[1]);
+    let dayThis = parseInt(thisDateParts[2]);
+    console.log(yearThis, monthThis, dayThis);
+    if(isInFuture(yearThis, monthThis, dayThis, yearCurrent, monthCurrent, dayCurrent)) {
+      pendingHTML += generateExpenseHTML(expense);
+    } else {
+      expenseHTML += generateExpenseHTML(expense);
+    }
+    
   });
   expenseContainer.innerHTML = expenseHTML;
+  pendingContainer.innerHTML = pendingHTML;
 }
 
 function handleExpenseFormSubmit(e) {
