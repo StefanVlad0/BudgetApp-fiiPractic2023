@@ -562,7 +562,12 @@ function addWalletEvent() {
       if(walletNameSelected) {
         currentWalletIndex = index;
         generateCurrentWallet(index);
-        
+        walletsSelected.forEach((otherWallet) => {
+          if (otherWallet != wallet) {
+            otherWallet.classList.remove('active');
+          }
+        });
+        wallet.classList.add('active');
       }
     })
   });

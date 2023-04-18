@@ -90,7 +90,7 @@
   z-index: 9999;
 }
 
-.wallet-types:hover {
+.wallet-types:hover, .wallet-types.active {
   background-color: var(--third-color);
 }
 
