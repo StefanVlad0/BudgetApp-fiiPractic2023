@@ -99,6 +99,60 @@
   
 }
 
+.buttom-box {
+  position: absolute;
+  padding: 25px;
+  width: 275px;
+  top:125px;
+  background-color: #219653; /* red background for demo purposes */
+  border-radius: 5px;
+}
+
+
+.top-box {
+  position: absolute;
+  padding: 25px;
+  width: 375px;
+  /* left: 435px;
+  top:-35px; */
+  top: 300px;
+
+  background-color: #219653; /* red background for demo purposes */
+  border-radius: 5px;
+}
+.top-box::before {
+  content: "";
+  position: absolute;
+  bottom: -10px; /* align with the bottom of the box */
+  left: 10px; /* adjust the distance from the button */
+  border-top: 10px solid #219653; /* same color as the background */
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+}
+
+
+.right-box {
+  position: absolute;
+  padding: 25px;
+  width: 275px;
+  left: 435px;
+  top:-50px;
+
+  background-color: #219653; /* red background for demo purposes */
+  border-radius: 5px;
+}
+
+.right-box::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  margin-top: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 10px solid #219653; /* same color as the background */
+}
+
 .history-text {
   color: var(--secondary-color);
   font-size: 20px;
@@ -120,6 +174,33 @@
   gap: 27px;
 }
 
+.close-tutorial {
+  padding: 5px 10px;
+  border: 2px solid #fff;
+  background-color: #333;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.close-tutorial:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+
+
+.align-left {
+  margin-top: 10px;
+  display: flex;
+  justify-content: end;
+}
+
 .black-text {
   color: var(--secondary-color);
 }
@@ -131,11 +212,11 @@
 .add-wallet {
   margin-top: 30px;
   margin-bottom: 46px;
+  position: relative;
   display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-
 
 .wallet-types {
   margin-left: 56px;
@@ -170,8 +251,16 @@
 }
 
 #dark {
-  padding-top: 45px;
-  padding-right: 56px;
+  margin-top: 45px;
+  margin-right: 56px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+#tutorial {
+  margin-top: 45px;
+  margin-right: 5px;
   height: 30px;
   width: 30px;
   cursor: pointer;
@@ -519,10 +608,12 @@ font-size: 36px;
   background-color: #FFFFFF;
   border-radius: 4px;
   border: 1px solid #D1D5DB;
+  position: relative;
 }
 .right-button:hover {
   background-color: #F8F8F8;
 }
+
 
 .plus-sign {
   font-size: 15px;

@@ -4,12 +4,15 @@
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         let icon = document.getElementById("dark");
+        let iconT = document.getElementById("tutorial");
         if(localStorage.getItem('mode') == 'dark'){
           document.body.classList.toggle("dark-theme");
         if(document.body.classList.contains("dark-theme")) {
           icon.src = "assets/sun.png";
+          iconT.src = "assets/tutorial-white.png";
         }else{
           icon.src = "assets/moon.png";
+          iconT.src = "assets/tutorial.png";
         }
         }
 
@@ -24,8 +27,10 @@
         document.body.classList.toggle("dark-theme");
         if(document.body.classList.contains("dark-theme")) {
           icon.src = "assets/sun.png";
+          iconT.src = "assets/tutorial-white.png";
         }else{
           icon.src = "assets/moon.png";
+          iconT.src = "assets/tutorial.png";
         }
       }
       });
@@ -199,13 +204,25 @@
       <aside class="aside">
         <div class="row-icon">
           <h1 class="logo"><span class="blue-text">Bud</span><span class="black-text">get</span></h1>
+          <div>
+            <img id="tutorial" src="assets/tutorial.png" alt="tutorial">
           <img id="dark" src="assets/moon.png">
+          </div>
+          
         </div>
         
         <section class="wallets">
           <section class="add-wallet">
             <p class="left-text">Wallets</p>
             <button class="right-button" id="open-modal"><span class="plus-sign">+</span></button>
+            <div class="right-box" id="firstTutorial" style="display: none;">
+              <p style="color:white; font-size: 18px;
+              line-height: 1.5;
+              font-weight: 400;">Use this button to add a new wallet</p>
+              <div class="align-left">
+                <button class="close-tutorial" id="gotFirst">Got it!</button>
+              </div>
+            </div>  
           </section>
           
           <!-- <section class="wallet-types" id="new-wallet" style="display: none">
@@ -226,6 +243,14 @@
           <section class="add-wallet">
             <p class="left-text">Categories</p>
             <button class="right-button" id="open-categoryModal"><span class="plus-sign">+</span></button>
+            <div class="right-box" id="secondTutorial" style="display: none;">
+              <p style="color:white; font-size: 18px;
+              line-height: 1.5;
+              font-weight: 400;">Use this button to add a new category</p>
+              <div class="align-left">
+                <button class="close-tutorial" id="gotSecond">Got it!</button>
+              </div>
+            </div>
           </section>
 
          
@@ -242,6 +267,14 @@
               <div>
                 <button class="log-expense" id="open-incomeModal"><span class="add-expense-text">+ Log Incomes</span></button>
                 <button class="log-expense" id="open-expenseModal"><span class="add-expense-text">+ Log Expense</span></button>
+                <div class="buttom-box" id="thirdTutorial" style="display: none;">
+                  <p style="color:white; font-size: 18px;
+                  line-height: 1.5;
+                  font-weight: 400;">Use these buttons to record a new expense or income</p>
+                  <div class="align-left">
+                    <button class="close-tutorial" id="gotThird">Got it!</button>
+                  </div>
+                </div>
               </div>
             </header>
 
@@ -280,8 +313,16 @@
                   </div>
                 </section> -->
             </section>
-
             <section class="pending">
+              <div class="top-box" id="fourthTutorial" style="display: none;">
+                <p style="color:white; font-size: 18px;
+                line-height: 1.5;
+                font-weight: 400;">Future expenses/incomes appear in Pending, and those that have already been made appear in History.
+                  You can delete any expense or income, or you can change their <strong>name</strong>, <strong>value</strong>, <strong>date</strong> or even <strong>category</strong>.</p>
+                <div class="align-left">
+                  <button class="close-tutorial" id="gotFourth">Got it!</button>
+                </div>
+              </div>
               <p class="history-text">Pending</p>
               <div id="pending-container"></div>
             </section>

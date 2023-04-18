@@ -633,3 +633,34 @@ function myFunction() {
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 
+//// TUTORIAL
+
+document.querySelector('#gotFirst').addEventListener('click', closeFirst);
+document.querySelector('#gotSecond').addEventListener('click', closeSecond);
+document.querySelector('#gotThird').addEventListener('click', closeThird);
+document.querySelector('#gotFourth').addEventListener('click', closeFourth);
+
+function closeFirst() {
+  document.querySelector('#firstTutorial').style.display = 'none';
+  document.querySelector('#secondTutorial').style.display = 'block';
+}
+
+function closeSecond() {
+  document.querySelector('#secondTutorial').style.display = 'none';
+  document.querySelector('#thirdTutorial').style.display = 'block';
+}
+
+function closeThird() {
+  document.querySelector('#thirdTutorial').style.display = 'none';
+  document.querySelector('#fourthTutorial').style.display = 'block';
+}
+
+function closeFourth() {
+  document.querySelector('#fourthTutorial').style.display = 'none';
+}
+
+let iconTutorial = document.getElementById("tutorial");
+
+iconTutorial.onclick = function() {
+  document.querySelector('#firstTutorial').style.display = 'block';
+}
