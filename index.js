@@ -557,6 +557,7 @@ function addWalletEvent() {
   walletsSelected.forEach((wallet, index) => {
   
     wallet.addEventListener('click', (event) => {
+      
       const walletNameSelected = event.target.querySelector(".title").textContent;
       if(walletNameSelected) {
         currentWalletIndex = index;
