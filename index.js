@@ -40,11 +40,11 @@ function handleFormSubmit(e) {
   const walletPhoto = document.querySelector('input[name="photo"]:checked').value;
   const walletTotalIncomes = walletAmount;
   const walletTotalExpenses = "0";
-  //console.log(walletPhoto);
   const newWallet = { walletType, walletAmount, walletPhoto, walletTotalIncomes, walletTotalExpenses};
   wallets.push(newWallet);
   localStorage.setItem('wallets', JSON.stringify(wallets));
   generateAllWalletsHTML();
+  addWalletEvent();
   closeModal(e);
 }
 
@@ -80,12 +80,7 @@ generateAllWalletsHTML();
 function addButtonsFunc() {
   const buttons = document.querySelectorAll(".buttons");
   buttons.forEach(button => {
-    // const textForEdit = document.createElement('div');
-    // textForEdit.textContent = "In edit mode";
-    // textForEdit.style.color = "green";
-    // textForEdit.style.visibility = "hidden";
-    // button.appendChild(textForEdit);
-  
+    
     let inEditMode = false;
     let inDeleteMode = false;
     
@@ -104,10 +99,8 @@ function addButtonsFunc() {
       inDeleteMode = false;
       inEditMode = !inEditMode;
       if(inEditMode) {
-        // textForEdit.textContent = "In edit mode";
-        // textForEdit.style.color = "green";
+       
       }
-      //textForEdit.style.visibility = inEditMode ? "visible" : "hidden";
     });
     
     deleteButton.addEventListener('click', () => {
@@ -123,13 +116,12 @@ for (let i = 0; i < expenses.length; i++) {
 }
 localStorage.setItem('expenses', JSON.stringify(expenses));
 generateAllExpensesHTML();
+addButtonsFunc();
       inEditMode = false;
       inDeleteMode = !inDeleteMode;
       if(inDeleteMode) {
-        // textForEdit.textContent = "In delete mode";
-        // textForEdit.style.color = "red";
+        
       }
-      //textForEdit.style.visibility = inDeleteMode ? "visible" : "hidden";
     });
   });
 }
@@ -298,12 +290,14 @@ function handleExpenseFormSubmit(e) {
   localStorage.setItem('wallets', JSON.stringify(wallets));
   localStorage.setItem('categories', JSON.stringify(categories));
   generateAllWalletsHTML();
+  addWalletEvent();
   generateAllCategoriesHTML();
   console.log(currentWalletIndex);
   generateCurrentWallet(currentWalletIndex);
   expenses.unshift(newExpense);
   localStorage.setItem('expenses', JSON.stringify(expenses));
   generateAllExpensesHTML();
+  addButtonsFunc();
   closeExpenseModal(e);
 }
 
@@ -324,9 +318,9 @@ generateAllExpensesHTML();
 
 
 ///////// INCOMES ////////////
-//let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+
 const incomeForm = document.querySelector('#income-form');
-//const expenseContainer = document.querySelector('#expense-container');
+
 
 function openIncomeModal() {
  updateCategoryDropdown();
@@ -418,12 +412,14 @@ function handleIncomeFormSubmit(e) {
  localStorage.setItem('wallets', JSON.stringify(wallets));
  localStorage.setItem('categories', JSON.stringify(categories));
  generateAllWalletsHTML();
+ addWalletEvent();
  generateAllCategoriesHTML();
  console.log(currentWalletIndex);
  generateCurrentWallet(currentWalletIndex);
  expenses.unshift(newExpense);
  localStorage.setItem('expenses', JSON.stringify(expenses));
  generateAllExpensesHTML();
+ addButtonsFunc();
  closeExpenseModal(e);
 }
 
@@ -443,6 +439,7 @@ updateIncomeCategoryDropdown();
 generateAllExpensesHTML();
 
 
+
 ///// EDIT EXPENSES //////
 
 let indexOf = 0;
@@ -459,8 +456,7 @@ function updateEditCategoryDropdown() {
 
 function openEditExpenseModal(index) {
   indexOf = index;
-  //console.log(index);
-  ////////////////////updateCategoryDropdown();
+  
   updateEditCategoryDropdown();
   document.querySelector('#edit-expense-name').value = expenses[index].expenseName;
  document.querySelector('#edit-expense-date').value = expenses[index].expenseDate;
@@ -480,23 +476,16 @@ function handleEditExpenseFormSubmit(e) {
   const editExpenseDate = document.querySelector('#edit-expense-date').value;
   const editExpenseAmount = document.querySelector('#edit-expense-amount').value;
   const editEategoryIndex = document.querySelector('#edit-category-value').value;
-  //const editWalletIndex = currentWalletIndex;
- 
-  ///const newExpense = { expenseName, expenseDate, expenseAmount, categoryIndex, walletIndex };
+  
 
    categories[expenses[indexOf].categoryIndex].categoryAmount
     = parseInt(categories[expenses[indexOf].categoryIndex].categoryAmount) - parseInt(expenses[indexOf].expenseAmount); /// Sterge suma din categoria in care a fost
     console.log(categories[expenses[indexOf].categoryIndex].categoryAmount);
 
     categories[editEategoryIndex].categoryAmount = parseInt(categories[editEategoryIndex].categoryAmount) + parseInt(editExpenseAmount);   //categories[expenses[indexOf].categoryIndex].categoryAmount = parseInt(categories[expenses[indexOf].categoryIndex].categoryAmount) + parseInt(editExpenseAmount);
-  // wallets[currentWalletIndex].walletTotalExpenses = parseInt(wallets[currentWalletIndex].walletTotalExpenses) + parseInt(expenseAmount);
-  // localStorage.setItem('wallets', JSON.stringify(wallets));
+  
    localStorage.setItem('categories', JSON.stringify(categories));
-  // generateAllWalletsHTML();
-  // generateAllCategoriesHTML();
-  // console.log(currentWalletIndex);
-  // generateCurrentWallet(currentWalletIndex);
-  // expenses.unshift(newExpense);
+  
   expenses[indexOf].expenseName = editExpenseName;
   expenses[indexOf].expenseDate = editExpenseDate;
   expenses[indexOf].expenseAmount = editExpenseAmount;
@@ -505,6 +494,7 @@ function handleEditExpenseFormSubmit(e) {
   myFunction();
   generateAllExpensesHTML();
   generateAllCategoriesHTML();
+  addButtonsFunc();
   closeEditExpenseModal(e);
 }
 
@@ -516,19 +506,25 @@ editExpenseForm.addEventListener('submit', handleEditExpenseFormSubmit);
 let currentWalletIndex = 0;
 const currentWalletContainer = document.querySelector('#current-wallet-container');
 
-let walletsSelected = document.querySelectorAll(".wallet-types");
 
-walletsSelected.forEach((wallet, index) => {
+
+function addWalletEvent() {
+  let walletsSelected = document.querySelectorAll(".wallet-types");
+  walletsSelected.forEach((wallet, index) => {
   
-  wallet.addEventListener('click', (event) => {
-    const walletNameSelected = event.target.querySelector(".title").textContent;
-    if(walletNameSelected) {
-      currentWalletIndex = index;
-      generateCurrentWallet(index);
-      
-    }
-  })
-});
+    wallet.addEventListener('click', (event) => {
+      const walletNameSelected = event.target.querySelector(".title").textContent;
+      if(walletNameSelected) {
+        currentWalletIndex = index;
+        generateCurrentWallet(index);
+        
+      }
+    })
+  });
+}
+
+addWalletEvent();
+
 
 function generateCurrentWallet(index) {
   let currentWalletHTML = '';
