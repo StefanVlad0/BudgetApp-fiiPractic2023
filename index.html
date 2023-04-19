@@ -17,7 +17,7 @@
         }
 
         icon.onclick = function() {
-          //localStorage.setItem("mode","light");
+          
            if(localStorage.getItem('mode') == 'dark'){
               localStorage.setItem("mode","light");
            } else {
@@ -134,8 +134,7 @@
           <label for="income-date">Select a date:</label>
           <input type="date" id="income-date" name="income-date">
 
-          <!-- <label for="income-date" id="income-name-text">Date:</label>
-          <input type="text" id="income-date" name="income-date"><br> -->
+          
           <label for="income-amount" id="income-name-text">Amount in RON:</label>
           <input type="number" id="income-amount" name="income-amount"><br>
           <label for="income-category-value" id="income-name-text">Select a category:</label><br>
@@ -158,8 +157,7 @@
           <label for="expense-date">Select a date:</label>
           <input type="date" id="expense-date" name="expense-date">
 
-          <!-- <label for="expense-date" id="income-name-text">Date:</label>
-          <input type="text" id="expense-date" name="expense-date"><br> -->
+          
           <label for="expense-amount" id="income-name-text">Amount in RON:</label>
           <input type="number" id="expense-amount" name="expense-amount"><br>
           <label for="category-value" id="income-name-text">Select a category:</label><br>
@@ -183,8 +181,7 @@
           <label for="edit-expense-date">Select a date:</label>
           <input type="date" id="edit-expense-date" name="edit-expense-date">
 
-          <!-- <label for="edit-expense-date" id="income-name-text">Date:</label>
-          <input type="text" id="edit-expense-date" name="edit-expense-date"><br> -->
+          
           <label for="edit-expense-amount" id="income-name-text">Amount in RON:</label>
           <input type="number" id="edit-expense-amount" name="edit-expense-amount"><br>
           <label for="edit-category-value" id="income-name-text">Select a category:</label>
@@ -225,15 +222,7 @@
             </div>  
           </section>
           
-          <!-- <section class="wallet-types" id="new-wallet" style="display: none">
-            <div class="left-panel">
-              <img src="assets/Economies.png" alt="econmies" width="40px" height="40px">
-            </div>
-            <div class="right-panel">
-              <p class="title" id="new-wallet-type"></p>
-              <p class="subtitle" id="new-wallet-amount"></p>
-            </div>
-          </section> -->
+          
           <div id="wallets-container"></div>
         </section>
         
@@ -280,38 +269,7 @@
 
             <section class="selected-wallet">
               <div id="current-wallet-container"></div>
-              <!-- <section class="current-wallet">
-                <div class="left-panel">
-                  <img src="assets/portofel.png" alt="portofel" width="40px" height="40px">
-                </div>
-                <div class="right-text">
-                  <p>Home Wallet</p>
-                </div>
-              </section> -->
-                <!-- <section class="balance">
-                  <div class="profit">
-                    <section class="income ident">
-                      <div class="left-panel">
-                        <img src="assets/Profit.png" alt="portofel" width="40px" height="40px">
-                      </div>
-                      <div class="right-panel">
-                        <p class="subtitle">Total Incomes</p>
-                        <p class="title">700 RON</p>
-                      </div>
-                    </section>
-                  </div>
-                  <div class="profit">
-                    <section class="income ident">
-                      <div class="left-panel">
-                        <img src="assets/Loss.png" alt="portofel" width="40px" height="40px">
-                      </div>
-                      <div class="right-panel">
-                        <p class="subtitle">Total Expenses</p>
-                        <p class="title">400 RON</p>
-                      </div>
-                    </section>
-                  </div>
-                </section> -->
+              
             </section>
             <section class="pending">
               <div class="top-box" id="fourthTutorial" style="display: none;">
@@ -330,113 +288,7 @@
             <section class="history">
               <p class="history-text">History</p>
               <div id="expense-container"></div>
-              <!-- <div class="expense">
-                <div class="profit line-expense">
-                  <section class="income" >
-                    <div class="left-panel" >
-                      <img src="assets/Utility.png" alt="portofel" width="40px" height="40px">
-                    </div>
-                    <div class="right-panel" style="border-right: 3px solid black; padding-right: 15px;">
-                      <p class="title">Electricity Bill</p>
-                      <p class="subtitle">03/03/2023</p>
-                    </div>
-                    <div class="left-panel">
-                      <img src="assets/Utility.png" alt="portofel" width="40px" height="40px">
-                    </div>
-                    <div class="right-panel">
-                      <p class="title">Electricity Bill</p>
-                      <p class="subtitle">03/03/2023</p>
-                    </div>
-                  </section>
-                  <section class="income">
-                    <p class="title red">- 120 RON</p>
-                    <div class="buttons">
-                      <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
-                      <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
-                    </div>
-                  </section>
-                </div> 
-              </div>
-              <div class="expense">
-                <div class="profit line-expense">
-                  <section class="income">
-                    <div class="left-panel">
-                      <img src="assets/Shopping.png" alt="portofel" width="40px" height="40px">
-                    </div>
-                    <div class="right-panel">
-                      <p class="title">Pepco</p>
-                      <p class="subtitle">26/02/2023</p>
-                    </div>
-                  </section>
-                  <section class="income">
-                    <p class="title red">- 150 RON</p>
-                    <div class="buttons">
-                      <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
-                      <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
-                    </div>
-                  </section>
-                </div> 
-              </div>
-              <div class="expense">
-                <div class="profit line-expense">
-                  <section class="income">
-                    <div class="left-panel">
-                      <img src="assets/Personal.png" alt="portofel" width="40px" height="40px">
-                    </div>
-                    <div class="right-panel">
-                      <p class="title">Brunch</p>
-                      <p class="subtitle">17/02/2023</p>
-                    </div>
-                  </section>
-                  <section class="income">
-                    <p class="title red">- 60 RON</p>
-                    <div class="buttons">
-                      <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
-                      <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
-                    </div>
-                  </section>
-                </div> 
-              </div>
-              <div class="expense">
-                <div class="profit line-expense">
-                  <section class="income">
-                    <div class="left-panel">
-                      <img src="assets/Saving.png" alt="portofel" width="40px" height="40px">
-                    </div>
-                    <div class="right-panel">
-                      <p class="title">Scholarship</p>
-                      <p class="subtitle">15/02/2023</p>
-                    </div>
-                  </section>
-                  <section class="income">
-                    <p class="title green">+ 600 RON</p>
-                    <div class="buttons">
-                      <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
-                      <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
-                    </div>
-                  </section>
-                </div> 
-              </div>
-              <div class="expense">
-                <div class="profit line-expense">
-                  <section class="income">
-                    <div class="left-panel">
-                      <img src="assets/Personal.png" alt="portofel" width="40px" height="40px">
-                    </div>
-                    <div class="right-panel">
-                      <p class="title">Cinema</p>
-                      <p class="subtitle">03/03/2023</p>
-                    </div>
-                  </section>
-                  <section class="income">
-                    <p class="title red">- 40 RON</p>
-                    <div class="buttons">
-                      <button class="btn edit"><img src="assets/edit.png" alt="Edit"></button>
-                      <button class="btn delete"><img src="assets/Delete.png" alt="Edit"></button>
-                    </div>
-                  </section>
-                </div> 
-              </div> -->
+              
               
             </section>
             <div id="snackbar">Datele au fost actualizate</div>

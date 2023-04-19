@@ -107,7 +107,7 @@ function addButtonsFunc() {
       const expenseElement = event.target.parentNode.parentNode.parentNode.parentNode;
       const name = expenseElement.querySelector(".title");
       console.log(name.textContent);
-      // assuming `name` variable holds the name of the expense to be deleted
+      
 for (let i = 0; i < expenses.length; i++) {
   if (expenses[i].expenseName === name.textContent) {
     expenses.splice(i, 1);
@@ -284,7 +284,7 @@ function generateAllExpensesHTML() {
   let expenseHTML = '';
   let pendingHTML = '';
   expenses.forEach(expense => {
-    //console.log(expense.expenseDate);
+    
     let currentDate = new Date();
     let day = currentDate.getDate();
     let month = currentDate.getMonth() + 1;
@@ -300,7 +300,7 @@ function generateAllExpensesHTML() {
     let yearCurrent = parseInt(dateParts[0]);
     let monthCurrent = parseInt(dateParts[1]);
     let dayCurrent = parseInt(dateParts[2]);
-    //console.log(formattedDate);
+    
     console.log(yearCurrent, monthCurrent, dayCurrent);
     let thisExpenseDate = expense.expenseDate;
     let thisDateParts = thisExpenseDate.split('-');
